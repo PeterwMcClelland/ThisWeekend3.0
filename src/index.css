@@ -57,3 +57,16 @@ a:-webkit-any-link {
   /* font-family: 'Bebas Neue', cursive; */
   font-family: 'Roboto Slab', serif;
 }
+
+
+/* Home */
+
+.homeimage {
+  background-image: url(../src/img/MTk2MTM1Nzc2Njc5OTYxNzQ1.webp);
+  background-size: cover;
+  background-attachment: fixed;
+  margin-top: 90px;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}

@@ -32,7 +32,9 @@ function App() {
           </Routes>
         </header>
       </div>
+      <section className='homeimage'></section>
     </BrowserRouter>
+    
   );
 }
 
