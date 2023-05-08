@@ -30,7 +30,8 @@ const SignUpForm = () => {
   };
 
   return (
-    <form onSubmit={handleSignUp}>
+    <div className='homeimage'>
+    <form className='form' onSubmit={handleSignUp}>
       <input
         type="text"
         placeholder="Username"
@@ -45,6 +46,7 @@ const SignUpForm = () => {
       />
       <button type="submit">Sign Up</button>
     </form>
+    </div>
   );
 };
 

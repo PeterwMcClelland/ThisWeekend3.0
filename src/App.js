@@ -11,6 +11,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
+        <div className='homeimage'>
         <header className="App-header">
           <div className="navbar">
             <NavLink to="/">This Weekend</NavLink>
@@ -25,14 +26,15 @@ function App() {
               </NavLink>
             </div>
           </div>
+          </header>
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/signup" element={<SignUpForm />} />
             <Route exact path="/login" element={<LoginForm />} />
           </Routes>
-        </header>
+          </div>
       </div>
-      <section className='homeimage'></section>
+      
     </BrowserRouter>
     
   );

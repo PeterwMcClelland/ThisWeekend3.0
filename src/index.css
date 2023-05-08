@@ -70,3 +70,9 @@ a:-webkit-any-link {
   height: 100%;
   width: 100%;
 }
+
+/* Login Form */
+
+.form {
+  padding-top: 150px;
+}
