@@ -66,8 +66,9 @@ a:-webkit-any-link {
   background-size: cover;
   background-attachment: fixed;
   margin-top: 90px;
-  position: absolute;
+  position: sticky;
   height: 100%;
+
   width: 100%;
 }
 
