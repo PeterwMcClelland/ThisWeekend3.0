@@ -5,7 +5,9 @@ import LoginForm from './components/LoginForm/LoginForm';
 import SpotsList from './components/SpotList';
 
 function HomePage() {
-  return <div></div>;
+  return <div>
+    <SpotsList></SpotsList>
+  </div>;
 }
 
 function App() {
@@ -22,9 +24,9 @@ function App() {
                 <span>Sign Up</span>
               </NavLink>
               <div>
-                <NavLink to="/spotlist">
+                {/* <NavLink to="/spotlist">
                   <span>Spot List</span>
-                </NavLink>
+                </NavLink> */}
               </div>
             </div>
             <div className="navlink">
@@ -38,8 +40,9 @@ function App() {
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/signup" element={<SignUpForm />} />
             <Route exact path="/login" element={<LoginForm />} />
-            <Route exact path="/spotlist" element={<SpotsList />} />
+            {/* <Route exact path="/spotlist" element={<SpotsList />} /> */}
           </Routes>
+          <div className='homebody'></div>
           </div>
       </div>
       

@@ -24,34 +24,43 @@ function SpotList() {
   });
 
   return (
-    <div>
-      <h1>Spot List</h1>
-      <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Search..." />
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Image</th> 
-            <th>Name</th>
-            <th>Address</th>
-            <th>Info</th>
-            <th>Favorite</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredSpots.map(spot => (
-            <tr key={spot._id}>
-              <td>{spot._id}</td>
-              <td><img src={spot.imgPath} alt={spot.name} style={{ width: '100px', height: 'auto' }} /></td> {/* Add this line */}
-              <td>{spot.name}</td>
-              <td>{spot.address}</td>
-              <td>{spot.info}</td>
-              <td>{spot.favorite ? "Yes" : "No"}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div className="spots-container">
+  <input
+  id='searchbar'
+    type="text"
+    value={searchQuery}
+    onChange={(e) => setSearchQuery(e.target.value)}
+    placeholder="Search..."
+  />
+  {filteredSpots.map((spot) => (
+    <div key={spot._id} className="spot-card">
+      <div className="column2">
+        <img
+          className="spot-img"
+          src={spot.imgPath}
+          alt={spot.name}
+        />
+      </div>
+      <div className="column1">
+        <div className="card-text">
+          <h2>{spot.name}</h2>
+          <p className="spot-info">{spot.info}</p>
+          <p className="textarea">
+             {spot.address}
+          </p>
+          <div
+            className="copypin"
+            onClick={() => {
+              navigator.clipboard.writeText(spot.address);
+            }}
+          >
+            {spot.favorite ? "Yes" : "No"}
+          </div>
+        </div>
+      </div>
     </div>
+  ))}
+</div>
     
   );
 }

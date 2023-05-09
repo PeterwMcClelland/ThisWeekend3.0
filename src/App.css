@@ -14,6 +14,10 @@
   }
 }
 
+.homebody {
+  height: 1000px;
+}
+
 .App-header {
   background-color: #282c34;
   
