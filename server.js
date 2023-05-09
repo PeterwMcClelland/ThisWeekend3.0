@@ -7,7 +7,7 @@ const PORT = 5002;
 
 
 
-mongoose.connect( 'mongodb+srv://peterwmcclelland:K2gi77gbeYH5jrZR@cluster0.xzibbyr.mongodb.net/', {
+mongoose.connect( 'mongodb+srv://peterwmcclelland:K2gi77gbeYH5jrZR@cluster0.xzibbyr.mongodb.net/this-weekend', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

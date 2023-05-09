@@ -62,7 +62,7 @@ a:-webkit-any-link {
 /* Home */
 
 .homeimage {
-  background-image: url(../src/img/MTk2MTM1Nzc2Njc5OTYxNzQ1.webp);
+  background-image: url(../public/img/MTk2MTM1Nzc2Njc5OTYxNzQ1.webp);
   background-size: cover;
   background-attachment: fixed;
   margin-top: 90px;
