@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy } from '@fortawesome/free-solid-svg-icons'
+
+
+const copyPin = <FontAwesomeIcon icon={faCopy} />
+
 function SpotList() {
   const [spots, setSpots] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
@@ -57,7 +63,7 @@ function SpotList() {
               navigator.clipboard.writeText(spot.address);
             }}
           >
-            {/* {spot.favorite ? "Yes" : "No"} */}
+            {copyPin}
           
           </div>
         </div>
