@@ -1,43 +1,40 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors'); 
+const cors = require('cors');
 const app = express();
 const PORT = 5002;
+require('dotenv').config();
 
-
-
-
-mongoose.connect( 'mongodb+srv://peterwmcclelland:K2gi77gbeYH5jrZR@cluster0.xzibbyr.mongodb.net/this-weekend', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-
 app.use(express.json());
-
-
-app.use(cors()); 
+app.use(cors());
 
 app.get('/api/spots', async (req, res) => {
-    try {
-      const spots = await mongoose.connection.db.collection('Spots').find({}).toArray();
-      res.json(spots);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send('Internal server error');
-    }
-  });
+  try {
+    const spots = await mongoose.connection.db.collection('Spots').find({}).toArray();
+    res.json(spots);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+});
 
-// Use the /api/signup endpoint
-const signupRouter = require('./src/components/SignUp/signup');
+const signupRouter = require('./src/routes/SignUp/signup');
 app.use('/api/signup', signupRouter);
 
-const loginRouter = require('./src/components/LoginForm/login');
-app.use('/api/login', loginRouter);
+const loginRouter = require('./src/routes/LoginForm/login');
 
-// Start the server
+const logRequestBody = (req, res, next) => {
+  console.log('Request Body:', req.body);
+  next();
+};
+
+app.use('/api/login', logRequestBody, loginRouter);
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
-
-

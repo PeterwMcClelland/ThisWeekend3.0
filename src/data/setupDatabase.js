@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 
-const url = 'mongodb+srv://peterwmcclelland:K2gi77gbeYH5jrZR@cluster0.xzibbyr.mongodb.net/'; // Replace with your MongoDB connection string
+const url = 'mongodb+srv://peterwmcclelland:K2gi77gbeYH5jrZR@cluster0.xzibbyr.mongodb.net/'; 
 const dbName = 'this-weekend'; // Replace with your database name
 const collectionName = 'Spots'; // Replace with your collection name
 
