@@ -24,7 +24,7 @@ function SpotList() {
   });
 
   return (
-    <div className="spots-container">
+    <div className="spot-card">
   <input
   id='searchbar'
     type="text"
@@ -32,8 +32,11 @@ function SpotList() {
     onChange={(e) => setSearchQuery(e.target.value)}
     placeholder="Search..."
   />
+  
   {filteredSpots.map((spot) => (
-    <div key={spot._id} className="spot-card">
+    
+    <div key={spot._id} className="spots-container">
+      <div className='columns-container'>
       <div className="column2">
         <img
           className="spot-img"
@@ -54,9 +57,11 @@ function SpotList() {
               navigator.clipboard.writeText(spot.address);
             }}
           >
-            {spot.favorite ? "Yes" : "No"}
+            {/* {spot.favorite ? "Yes" : "No"} */}
+          
           </div>
         </div>
+      </div>
       </div>
     </div>
   ))}

@@ -114,7 +114,7 @@ a:-webkit-any-link {
 } 
 
 .spot-img {
-  max-width: 85%;  
+  max-width: 90%;  
   height: auto;  
   border-radius: 5px;
   border: 1px solid white;
@@ -138,14 +138,26 @@ a:-webkit-any-link {
 }
 
 #searchbar {
-  height: 40px;
-    width: 50%;
-    font-size: 16px;
-    margin-top: 25px;
+  /* height: 40px;
+    width: 50%;*/
+    font-size: 20px; 
+    margin-top: 90px;
     border-radius: 5px;
     border: solid 2px rgb(192, 192, 192);
-    font-family: 'Climate Crisis';
+    font-family: 'Climate Crisis'; 
+    position: fixed;
+    top: 0;
+    height: 25px;
+  left: 0;
+  right: 0;
+  justify-content: center;
+z-index: 1000px;
+width: 35%;
+font-family: 'Bebas Neue', cursive;
+margin-left: 10px;
 }
+
+
 
 @media (max-width: 600px) {
   .card-text {
