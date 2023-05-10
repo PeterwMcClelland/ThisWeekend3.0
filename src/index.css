@@ -23,6 +23,10 @@ code {
 
 /* Header */
 
+.hero-header {
+  position: relative;
+}
+
 .navbar {
   text-align: center;
   background-color: rgb(128, 128, 128, .9);
@@ -50,12 +54,15 @@ a:-webkit-any-link {
   justify-content: space-evenly;
   color: white;
   font-weight: 500;
+  float: right;
   padding-bottom: 20px;
+  cursor: pointer;
   margin: 10px;
   font-weight: bolder;
   font-size: x-large;
-  /* font-family: 'Bebas Neue', cursive; */
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Bebas Neue', cursive;
+  
+  font-style: italic;
 }
 
 
@@ -152,9 +159,27 @@ a:-webkit-any-link {
   right: 0;
   justify-content: center;
 z-index: 1000px;
-width: 35%;
+width: 25%;
 font-family: 'Bebas Neue', cursive;
 margin-left: 10px;
+}
+
+/* Login/Sign Up */
+
+.signin-signup {
+  float: right;
+}
+
+/* Icons */
+
+.copypin:hover {
+  color: rgb(14, 110, 15);
+}
+
+.copypin {
+  display: inline;
+  padding-left: 10px;
+  cursor: copy;
 }
 
 

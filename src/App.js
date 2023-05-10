@@ -26,7 +26,9 @@ function App() {
         <div className="homeimage">
           <header className="App-header">
             <div className="navbar">
+              <div className='hero-header'>
               <NavLink to="/">This Weekend</NavLink>
+              </div>
               <div className="navlink">
                 {loggedInUser ? (
                   <>
@@ -35,12 +37,14 @@ function App() {
                   </>
                 ) : (
                   <>
+                  <div className='signin-signup'>
                     <NavLink to="/signup">
-                      <span>Sign Up</span>
+                      <span>Sign Up  / </span>
                     </NavLink>
                     <NavLink to="/login">
                       <span>Log In</span>
                     </NavLink>
+                    </div>
                   </>
                 )}
               </div>
