@@ -170,6 +170,14 @@ margin-left: 10px;
   float: right;
 }
 
+.logout {
+  font-family: system-ui;
+  border-radius: 15px;
+  height: 50%;
+  width: 50%;
+  font-size: x-small;
+}
+
 /* Icons */
 
 .copypin:hover {

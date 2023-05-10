@@ -33,7 +33,7 @@ function App() {
                 {loggedInUser ? (
                   <>
                     <span className="username-display">{loggedInUser}</span>
-                    <button onClick={handleLogout}>Log Out</button>
+                    <button className='logout' onClick={handleLogout}>Log Out</button>
                   </>
                 ) : (
                   <>
