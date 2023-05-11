@@ -21,7 +21,10 @@ const LoginForm = ({ setLoggedInUser }) => {
   
       if (response.ok) {
         // Handle successful login
+        const data = await response.json();
         console.log('User logged in successfully!');
+        // Save the JWT to the local storage
+        localStorage.setItem('token', data.token);
         setLoggedInUser(username);
         navigate('/'); // Redirect to the home page
       } else {

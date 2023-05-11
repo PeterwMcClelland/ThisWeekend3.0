@@ -39,10 +39,10 @@ function App() {
                   <>
                   <div className='signin-signup'>
                     <NavLink to="/signup">
-                      <span>Sign Up  / </span>
+                      <span className='signup'>Sign Up  / </span>
                     </NavLink>
                     <NavLink to="/login">
-                      <span>Log In</span>
+                      <span className='login'>Log In</span>
                     </NavLink>
                     </div>
                   </>
