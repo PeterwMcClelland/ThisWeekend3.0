@@ -13,7 +13,48 @@ mongoose.connect(process.env.MONGODB_URI, {
 app.use(express.json());
 app.use(cors());
 
+app.post('/api/users/:userId/favorites', async (req, res) => {
+  const userId = req.params.userId;
+  const spotId = req.body.spotId;
+  
+  const user = await User.findById(userId);
+  if (!user) {
+    return res.status(404).send('User not found');
+  }
 
+  if (!user.favorites.includes(spotId)) {
+    user.favorites.push(spotId);
+    await user.save();
+  }
+
+  res.json(user);
+});
+
+app.delete('/api/users/:userId/favorites/:spotId', async (req, res) => {
+  const userId = req.params.userId;
+  const spotId = req.params.spotId;
+
+  const user = await User.findById(userId);
+  if (!user) {
+    return res.status(404).send('User not found');
+  }
+
+  user.favorites = user.favorites.filter(id => id.toString() !== spotId);
+  await user.save();
+
+  res.json(user);
+});
+
+app.get('/api/users/:userId/favorites', async (req, res) => {
+  const userId = req.params.userId;
+  
+  const user = await User.findById(userId).populate('favorites');
+  if (!user) {
+    return res.status(404).send('User not found');
+  }
+
+  res.json(user.favorites);
+});
 
 app.get('/api/spots', async (req, res) => {
   try {

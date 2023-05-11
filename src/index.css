@@ -188,6 +188,10 @@ margin-left: 10px;
   color: lightblue;
 }
 
+.favorites {
+  padding-right: 25px;
+}
+
 /* Icons */
 
 .copypin:hover {

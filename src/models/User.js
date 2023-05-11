@@ -9,7 +9,9 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
+  favorites: [{ 
+    type: mongoose.Schema.Types.ObjectId, ref: 'Spot'
+ }],
 });
 
 const User = mongoose.model('User', UserSchema);
