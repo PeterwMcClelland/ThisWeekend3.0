@@ -82,8 +82,28 @@ a:-webkit-any-link {
 /* Login Form */
 
 .form {
-  padding-top: 150px;
+  padding-top: 75px;
   height: 1000px;
+  text-align: -webkit-center;
+  
+}
+
+.inputs-signup {
+ 
+  align-items: center;
+  display: table-caption;
+  font-family: 'Bebas Neue', cursive;
+}
+
+.text {
+  font-family: 'Bebas Neue', cursive;
+  width: 150px;
+  text-align: -webkit-center;
+  border-radius: 5px;
+}
+
+#password {
+  margin-top: 10px;
 }
 
 
@@ -218,11 +238,11 @@ margin-left: 10px;
   }
 
   .column2 {
-    width: 120%;
+    width: 100%;
   }
 
   .spot-img {
-    max-width: 50%;  
+    max-width: 90%;  
     height: auto;  
     border-radius: 5px;
     border: 1px solid white;

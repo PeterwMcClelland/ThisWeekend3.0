@@ -36,19 +36,25 @@ const SignUpForm = ({ setLoggedInUser }) => {
   return (
     <div className="homeimage">
       <form className="form" onSubmit={handleSignUp}>
+        <div className='inputs-signup'>
         <input
+        id='username'
+        className='text'
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
+        id='password'
+        className='text'
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Sign Up</button>
+        </div>
       </form>
     </div>
   );
