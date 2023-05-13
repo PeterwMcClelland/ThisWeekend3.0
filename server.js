@@ -15,6 +15,7 @@ app.use(cors());
 
 
 
+
 app.get('/api/spots', async (req, res) => {
   try {
     const spots = await mongoose.connection.db.collection('Spots').find({}).toArray();
