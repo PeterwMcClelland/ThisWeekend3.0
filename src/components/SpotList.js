@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Spot from './Spot';
 
-function SpotList({ favorites, setFavorites }) {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
+
+const copyPin = <FontAwesomeIcon icon={faCopy} />;
+const solidStarIcon = <FontAwesomeIcon icon={solidStar} />;
+const regularStarIcon = <FontAwesomeIcon icon={regularStar} />;
+
+function SpotList({ loggedInUser }) {
   const [spots, setSpots] = useState([]);
+  const [favorites, setFavorites] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
@@ -14,17 +22,17 @@ function SpotList({ favorites, setFavorites }) {
       .catch(err => {
         console.error(err);
       });
-  }, []);
 
-  const isFavorite = (id) => favorites.includes(id);
-
-  const toggleFavorite = (id) => {
-    if (isFavorite(id)) {
-      setFavorites(favorites.filter(favId => favId !== id));
-    } else {
-      setFavorites([...favorites, id]);
+    if (loggedInUser) {
+      axios.get(`http://localhost:5002/api/user/${loggedInUser}`)
+        .then(res => {
+          setFavorites(res.data.favorites);
+        })
+        .catch(err => {
+          console.error(err);
+        });
     }
-  };
+  }, [loggedInUser]);
 
   const filteredSpots = spots.filter(spot => {
     const name = spot.name.toLowerCase();
@@ -33,6 +41,26 @@ function SpotList({ favorites, setFavorites }) {
     const query = searchQuery.toLowerCase();
     return name.includes(query) || address.includes(query) || info.includes(query);
   });
+
+  const addFavorite = (spotId) => {
+    axios.put(`http://localhost:5002/api/user/${loggedInUser}/addFavorite`, { spotId })
+      .then(res => {
+        setFavorites(res.data.favorites);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+
+  const removeFavorite = (spotId) => {
+    axios.put(`http://localhost:5002/api/user/${loggedInUser}/removeFavorite`, { spotId })
+      .then(res => {
+        setFavorites(res.data.favorites);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
 
   return (
     <div className="spot-card">
@@ -43,18 +71,53 @@ function SpotList({ favorites, setFavorites }) {
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="Search..."
       />
-      
+
       {filteredSpots.map((spot) => (
-        <Spot
-          key={spot._id}
-          spot={spot}
-          isFavorite={isFavorite(spot._id)}
-          toggleFavorite={() => toggleFavorite(spot._id)}
-        />
-      ))}
+        <div key={spot._id} className="spots-container">
+          <div className='columns-container'>
+            <div className="column2">
+              <img
+                className="spot-img"
+                src={spot.imgPath}
+                alt={spot.name}
+              />
+            </div>
+            <div className="column1">
+              <div className="card-text">
+                <h2>{spot.name}</h2>
+                <p className="spot-info">{spot.info}</p>
+                <p className="textarea">
+                  {spot.address}
+                </p>
+                <div
+                  className="copypin"
+                  onClick={() => {
+                    navigator.clipboard.writeText(spot.address);
+                  }}
+                >
+                  {copyPin}
+                </div>
+                {loggedInUser && (
+                  favorites.includes(spot._id) ? (
+                    <button onClick={() => removeFavorite(spot._id)}>
+                      {solidStarIcon} Remove from Favorites
+                    </button>
+                  ) : (
+                    <button onClick={() => addFavorite(spot._id)}>
+                      {regularStarIcon} Add to Favorites
+                    </button>
+                  )
+                )}
+                </div>
+              </div>
+              </div>
     </div>
-  );
+  ))}
+</div>
+
+);
 }
 
 export default SpotList;
+
 
