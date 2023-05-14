@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 5002;
 require('dotenv').config();
+const uri = process.env.MONGODB_URI;
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
