@@ -23,6 +23,14 @@ app.get('/manifest.json', (req, res) => {
   res.sendFile(path.join(__dirname, 'client/build', 'manifest.json'));
 });
 
+const api = axios.create({
+  baseURL: process.env.NODE_ENV === 'production' ? 'https://thisweekend.herokuapp.com/' : 'http://localhost:5002'
+});
+
+api.get('/spots').then(response => {
+  console.log(response.data);
+});
+
 
 app.get('/api/spots', async (req, res) => {
   try {
