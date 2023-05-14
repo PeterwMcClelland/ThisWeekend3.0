@@ -19,6 +19,10 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+app.get('/manifest.json', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'manifest.json'));
+});
+
 
 app.get('/api/spots', async (req, res) => {
   try {
