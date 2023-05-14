@@ -19,10 +19,6 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
-
 
 app.get('/api/spots', async (req, res) => {
   try {
@@ -45,6 +41,10 @@ const logRequestBody = (req, res, next) => {
 };
 
 app.use('/api/login', logRequestBody, loginRouter);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/build/index.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
