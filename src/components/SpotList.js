@@ -15,7 +15,7 @@ function SpotList({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get('http://localhost:5002/api/spots')
+    axios.get('/api/spots')
       .then(res => {
         setSpots(res.data);
       })
@@ -24,7 +24,7 @@ function SpotList({ loggedInUser }) {
       });
 
     if (loggedInUser) {
-      axios.get(`http://localhost:5002/api/user/${loggedInUser}`)
+      axios.get(`/api/user/${loggedInUser}`)
         .then(res => {
           setFavorites(res.data.favorites);
         })
@@ -43,7 +43,7 @@ function SpotList({ loggedInUser }) {
   });
 
   const addFavorite = (spotId) => {
-    axios.put(`http://localhost:5002/api/user/${loggedInUser}/addFavorite`, { spotId })
+    axios.put(`/api/user/${loggedInUser}/addFavorite`, { spotId })
       .then(res => {
         setFavorites(res.data.favorites);
       })
@@ -53,7 +53,7 @@ function SpotList({ loggedInUser }) {
   };
 
   const removeFavorite = (spotId) => {
-    axios.put(`http://localhost:5002/api/user/${loggedInUser}/removeFavorite`, { spotId })
+    axios.put(`/api/user/${loggedInUser}/removeFavorite`, { spotId })
       .then(res => {
         setFavorites(res.data.favorites);
       })
