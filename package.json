@@ -30,13 +30,16 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
+    "start-dev": "react-scripts start",
     "start-server": "node server.js",
-    "dev": "npm-run-all --parallel start start-server",
+    "dev": "concurrently --kill-others \"npm run start-server\" \"npm run start-dev\"",
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  
   "eslintConfig": {
     "extends": [
       "react-app",
