@@ -30,9 +30,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start-server": "node server.js",
-    "dev": "npm-run-all --parallel start start-server",
+    "start": "node server.js",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -49,11 +48,13 @@
       "not dead",
       "not op_mini all"
     ],
-    
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
   }
 }

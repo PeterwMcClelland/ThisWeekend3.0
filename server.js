@@ -55,6 +55,8 @@ const logRequestBody = (req, res, next) => {
 
 app.use('/api/login', logRequestBody, loginRouter);
 
+app.use(express.static(path.join(__dirname, '/client/build')));
+
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
