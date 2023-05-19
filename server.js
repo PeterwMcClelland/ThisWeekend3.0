@@ -198,6 +198,10 @@ const PORT = process.env.PORT || 5002;
 require('dotenv').config();
 const uri = process.env.MONGODB_URI;
 
+const apiRoutes = require('./services/api');
+app.use('/api', apiRoutes);
+
+
 
 
 mongoose.connect(process.env.MONGODB_URI, {

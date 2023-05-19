@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Load the User model
-const User = require('../models/User');
+const User = require('../src/models/User');
 
 // API endpoint for getting user information
 router.get('/user/:username', async (req, res) => {
