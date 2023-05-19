@@ -31,11 +31,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node server.js",
-    "start-dev": "react-scripts start",
+    "start": "react-scripts start",
     "start-server": "node server.js",
-    "dev": "concurrently --kill-others \"npm run start-server\" \"npm run start-dev\"",
-    "heroku-postbuild": "npm install --only=dev && npm install && npm run build",
+    "dev": "npm-run-all --parallel start start-server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
