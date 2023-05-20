@@ -1,8 +1,8 @@
-const MongoClient = require('mongodb').MongoClient;
+// const MongoClient = require('mongodb').MongoClient;
 
-const url = 'mongodb+srv://peterwmcclelland:K2gi77gbeYH5jrZR@cluster0.xzibbyr.mongodb.net/'; 
-const dbName = 'this-weekend'; // Replace with your database name
-const collectionName = 'Spots'; // Replace with your collection name
+// const url = 'mongodb+srv://peterwmcclelland:K2gi77gbeYH5jrZR@cluster0.xzibbyr.mongodb.net/'; 
+// const dbName = 'this-weekend'; // Replace with your database name
+// const collectionName = 'Spots'; // Replace with your collection name
 
 const initialDetails = [
 //     {
@@ -393,19 +393,36 @@ const initialDetails = [
   // Add more items as needed
 ];
 
-async function setupDatabase() {
-    try {
-      const client = await MongoClient.connect(url, { useUnifiedTopology: true });
-      const db = client.db(dbName);
-      const collection = db.collection(collectionName);
+// async function setupDatabase() {
+//     try {
+//       const client = await MongoClient.connect(url, 
+//         { 
+//           useUnifiedTopology: true 
+//         });
+//       const db = client.db(dbName);
+//       const collection = db.collection(collectionName);
   
+//       await collection.insertMany(initialDetails);
+//       console.log('Data inserted successfully.');
+  
+//       client.close();
+//     } catch (error) {
+//       console.error('Error inserting data:', error);
+//     }
+//   }
+  
+//   setupDatabase();
+
+async function setupDatabase(mongoose) {
+  try {
+      const db = mongoose.connection;
+      const collection = db.collection('Spots');
+
       await collection.insertMany(initialDetails);
       console.log('Data inserted successfully.');
-  
-      client.close();
-    } catch (error) {
+  } catch (error) {
       console.error('Error inserting data:', error);
-    }
   }
-  
-  setupDatabase();
+}
+
+module.exports = setupDatabase;

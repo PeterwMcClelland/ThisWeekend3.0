@@ -207,7 +207,10 @@ app.use('/api', apiRoutes);
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+}).then(() => {
+  const setupDatabase = require('./src/data/setupDatabase');
+  setupDatabase(mongoose);
+}).catch((err) => console.error(err));
 
 app.use(cors()); 
 app.use(express.json());
