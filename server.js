@@ -232,6 +232,7 @@ app.get('/api/spots', async (req, res) => {
     console.error(error);
     res.status(500).send('Internal server error');
   }
+  
 });
 
 if (process.env.NODE_ENV === "production") {
