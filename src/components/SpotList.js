@@ -22,7 +22,7 @@ function SpotList({ loggedInUser }) {
       .catch(err => {
         console.error(err);
       });
-
+  
     if (loggedInUser) {
       axios.get(`/api/user/${loggedInUser}`)
         .then(res => {
