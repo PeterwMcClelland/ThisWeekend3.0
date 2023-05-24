@@ -194,7 +194,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const path = require('path');
-const PORT = process.env.NODE_ENV === "production" ? "https://thisweekend.herokuapp.com/" : "http://localhost:3000/";
+const PORT = process.env.PORT || 5002;
 require('dotenv').config();
 const uri = process.env.MONGODB_URI;
 
