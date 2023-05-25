@@ -7,6 +7,7 @@ import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
 
 const path = require('path');
 
+
 require("dotenv").config({ path: path.resolve(__dirname, './../.env') });
 
 const copyPin = <FontAwesomeIcon icon={faCopy} />;
