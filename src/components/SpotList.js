@@ -15,7 +15,7 @@ function SpotList({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get('/api/spots')
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/spots`)
       .then(res => {
         setSpots(res.data);
       })
