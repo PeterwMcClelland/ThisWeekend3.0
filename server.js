@@ -199,6 +199,8 @@ require('dotenv').config();
 const uri = process.env.MONGODB_URI;
 
 const apiRoutes = require('./services/api');
+
+app.use(cors()); 
 app.use('/api', apiRoutes);
 
 
@@ -209,7 +211,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   useUnifiedTopology: true,
 })
 
-app.use(cors()); 
 app.use(express.json());
 
 const signupRouter = require('./src/routes/SignUp/signup');
@@ -236,7 +237,6 @@ app.get('/api/spots', async (req, res) => {
 });
 
 if (process.env.NODE_ENV === "production") {
-  require('dotenv').config();
   // Serve any static files
   app.use(express.static(path.join(__dirname, "client/build")));
   // Handle React routing, return all requests to React app
