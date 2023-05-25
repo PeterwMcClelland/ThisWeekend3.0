@@ -5,6 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
 
+const path = require('path');
+
+require("dotenv").config({ path: path.resolve(__dirname, './../.env') });
+
 const copyPin = <FontAwesomeIcon icon={faCopy} />;
 const solidStarIcon = <FontAwesomeIcon icon={solidStar} />;
 const regularStarIcon = <FontAwesomeIcon icon={regularStar} />;
