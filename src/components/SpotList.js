@@ -15,24 +15,24 @@ function SpotList({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/spots`)
-      .then(res => {
-        setSpots(res.data);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  
-    if (loggedInUser) {
-      axios.get(`/api/user/${loggedInUser}`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:5002'}/api/spots`)
         .then(res => {
-          setFavorites(res.data.favorites);
+            setSpots(res.data);
         })
         .catch(err => {
-          console.error(err);
+            console.error(err);
         });
+
+    if (loggedInUser) {
+        axios.get(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:5002'}/api/user/${loggedInUser}`)
+            .then(res => {
+                setFavorites(res.data.favorites);
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
-  }, [loggedInUser]);
+}, [loggedInUser]);
 
   const filteredSpots = spots.filter(spot => {
     const name = spot.name.toLowerCase();
@@ -43,24 +43,24 @@ function SpotList({ loggedInUser }) {
   });
 
   const addFavorite = (spotId) => {
-    axios.put(`/api/user/${loggedInUser}/addFavorite`, { spotId })
-      .then(res => {
-        setFavorites(res.data.favorites);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
+    axios.put(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:5002'}/api/user/${loggedInUser}/addFavorite`, { spotId })
+        .then(res => {
+            setFavorites(res.data.favorites);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+};
 
-  const removeFavorite = (spotId) => {
-    axios.put(`/api/user/${loggedInUser}/removeFavorite`, { spotId })
-      .then(res => {
-        setFavorites(res.data.favorites);
-      })
-      .catch(err => {
-        console.error(err);
-      });
-  };
+const removeFavorite = (spotId) => {
+    axios.put(`${process.env.REACT_APP_SERVER_URL || 'http://localhost:5002'}/api/user/${loggedInUser}/removeFavorite`, { spotId })
+        .then(res => {
+            setFavorites(res.data.favorites);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+};
 
   return (
     <div className="spot-card">
