@@ -3,7 +3,7 @@ import axios from '../axiosInstance';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
+
 
 const copyPin = <FontAwesomeIcon icon={faCopy} />;
 const solidStarIcon = <FontAwesomeIcon icon={solidStar} />;
