@@ -194,7 +194,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const app = express();
 const path = require('path');
-const PORT = process.env.PORT;
+const PORT = process.env.REACT_APP_SERVER_URL;
 require('dotenv').config();
 const uri = process.env.MONGODB_URI;
 
