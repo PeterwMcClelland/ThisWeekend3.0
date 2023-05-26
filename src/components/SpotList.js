@@ -16,7 +16,7 @@ function SpotList({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/spots`)
+    axios.get(`https://thisweekend.herokuapp.com/api/spots`)
         .then(res => {
             setSpots(res.data);
         })
