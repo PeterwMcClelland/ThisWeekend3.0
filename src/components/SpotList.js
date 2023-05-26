@@ -16,7 +16,7 @@ function SpotList({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}api/spots`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/spots`)
         .then(res => {
             setSpots(res.data);
         })
@@ -25,7 +25,7 @@ function SpotList({ loggedInUser }) {
         });
 
     if (loggedInUser) {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}api/user/${loggedInUser}`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/user/${loggedInUser}`)
             .then(res => {
                 setFavorites(res.data.favorites);
             })
@@ -44,7 +44,7 @@ function SpotList({ loggedInUser }) {
   });
 
   const addFavorite = (spotId) => {
-    axios.put(`${process.env.REACT_APP_SERVER_URL}api/user/${loggedInUser}/addFavorite`, { spotId })
+    axios.put(`${process.env.REACT_APP_SERVER_URL}/api/user/${loggedInUser}/addFavorite`, { spotId })
         .then(res => {
             setFavorites(res.data.favorites);
         })
@@ -54,7 +54,7 @@ function SpotList({ loggedInUser }) {
 };
 
 const removeFavorite = (spotId) => {
-    axios.put(`${process.env.REACT_APP_SERVER_URL}api/user/${loggedInUser}/removeFavorite`, { spotId })
+    axios.put(`${process.env.REACT_APP_SERVER_URL}/api/user/${loggedInUser}/removeFavorite`, { spotId })
         .then(res => {
             setFavorites(res.data.favorites);
         })
