@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_URL;
 
 const copyPin = <FontAwesomeIcon icon={faCopy} />;
 const solidStarIcon = <FontAwesomeIcon icon={solidStar} />;
@@ -16,7 +15,7 @@ function SpotList({ loggedInUser }) {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get(`https://thisweekend.herokuapp.com/api/spots`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/spots`)
         .then(res => {
             setSpots(res.data);
         })
