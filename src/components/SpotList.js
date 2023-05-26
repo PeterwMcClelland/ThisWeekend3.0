@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../axiosInstance';
+import axios from '../axiosIntance';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
