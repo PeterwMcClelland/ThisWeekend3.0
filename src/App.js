@@ -37,6 +37,7 @@ function App() {
                   </>
                 ) : (
                   <>
+                  
                   <div className='signin-signup'>
                     <NavLink to="/signup">
                       <span className='signup'>Sign Up  / </span>
