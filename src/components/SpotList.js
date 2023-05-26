@@ -4,7 +4,7 @@ import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-require('dotenv').config();
+
 
 const copyPin = <FontAwesomeIcon icon={faCopy} />;
 const solidStarIcon = <FontAwesomeIcon icon={solidStar} />;
