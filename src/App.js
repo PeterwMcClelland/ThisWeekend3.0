@@ -27,7 +27,7 @@ function App() {
           <header className="App-header">
             <div className="navbar">
               <div className='hero-header'>
-              <NavLink to="/">This Weekend</NavLink>
+              <NavLink to="/api/spots">This Weekend</NavLink>
               </div>
               <div className="navlink">
                 {loggedInUser ? (
