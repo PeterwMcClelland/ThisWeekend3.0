@@ -80,7 +80,7 @@ const LoginForm = ({ setLoggedInUser }) => {
   
     // Make a POST request to the login endpoint on the server
     try {
-      const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/login`, {
+      const response = await fetch(`https://thisweekend.herokuapp.com/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
