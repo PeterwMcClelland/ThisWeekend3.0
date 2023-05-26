@@ -247,5 +247,5 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.listen(PORT, () => {
-  console.log('Server URL:', process.env.REACT_APP_SERVER_URL);
+  console.log(`Server listening on port ${PORT}`);
 });
