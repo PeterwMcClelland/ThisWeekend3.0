@@ -214,6 +214,17 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use(express.json());
 
+app.get('/api/spots', async (req, res) => {
+  try {
+    const spots = await mongoose.connection.db.collection('Spots').find({}).toArray();
+    res.json(spots);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal server error');
+  }
+  
+});
+
 const signupRouter = require('./src/routes/SignUp/signup');
 app.use('/api/signup', signupRouter);
 
@@ -226,16 +237,6 @@ const logRequestBody = (req, res, next) => {
 
 app.use('/api/login', logRequestBody, loginRouter);
 
-app.get('/api/spots', async (req, res) => {
-  try {
-    const spots = await mongoose.connection.db.collection('Spots').find({}).toArray();
-    res.json(spots);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
-  
-});
 
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
