@@ -4,8 +4,8 @@ const path = require('path');
 require("dotenv").config({ path: path.resolve(__dirname, '../../.env') });
 
 const url = process.env.MONGODB_URI; 
-const dbName = 'this-weekend'; // Replace with your database name
-const collectionName = 'Spots'; // Replace with your collection name
+const dbName = 'this-weekend'; 
+const collectionName = 'Spots'; 
 
 const initialDetails = [
     {

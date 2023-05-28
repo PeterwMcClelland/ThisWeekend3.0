@@ -73,7 +73,7 @@ a:-webkit-any-link {
   background-size: cover;
   background-attachment: fixed;
   margin-top: 90px;
-  position: sticky;
+  /* position: sticky; */
   height: 100%;
 
   width: 100%;
@@ -248,6 +248,10 @@ margin-left: 10px;
     border: 1px solid white;
     box-shadow: 5px 5px 10px #666666;
     margin-top: 10px;
+  }
+
+  .homeimage {
+    height: 500px;
   }
 
 }

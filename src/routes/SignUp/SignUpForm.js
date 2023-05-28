@@ -9,7 +9,7 @@ const SignUpForm = ({ setLoggedInUser }) => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    // Make a POST request to the registration endpoint on the server
+    
     try {
       const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/api/signup`, {
         method: 'POST',
@@ -20,12 +20,11 @@ const SignUpForm = ({ setLoggedInUser }) => {
       });
 
       if (response.ok) {
-        // Handle successful registration
+        
         console.log('User registered successfully!');
         setLoggedInUser(username);
-        navigate('/'); // Navigate back to the home page
+        navigate('/'); 
       } else {
-        // Handle registration error
         console.error('Registration failed.');
       }
     } catch (error) {

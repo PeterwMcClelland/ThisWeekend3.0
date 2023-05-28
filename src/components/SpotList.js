@@ -69,7 +69,7 @@ const removeFavorite = (spotId) => {
         type="text"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
-        placeholder="Search..."
+        placeholder="Ledges, Stairs, Skate Park..."
       />
 
       {filteredSpots.map((spot) => (
