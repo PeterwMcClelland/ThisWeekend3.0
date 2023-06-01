@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../axiosIntance';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons';
-import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons';
-
+import { faCopy, faStar as solidStar } from '@fortawesome/free-solid-svg-icons'; // replace 'fastar' with 'faStar as solidStar'
+import { faStar as regularStar } from '@fortawesome/free-regular-svg-icons'; // replace 'ragularStar' with 'faStar as regularStar'
 
 const copyPin = <FontAwesomeIcon icon={faCopy} />;
-const solidStarIcon = <FontAwesomeIcon icon={solidStar} />;
-const regularStarIcon = <FontAwesomeIcon icon={regularStar} />;
+const solidStarIcon = <FontAwesomeIcon icon={solidStar} />; // uncomment this line
+const regularStarIcon = <FontAwesomeIcon icon={regularStar} />; // uncomment this line
 
 function SpotList({ loggedInUser }) {
   const [spots, setSpots] = useState([]);
@@ -44,23 +43,23 @@ function SpotList({ loggedInUser }) {
 
   const addFavorite = (spotId) => {
     axios.put(`${process.env.REACT_APP_SERVER_URL}/api/user/${loggedInUser}/addFavorite`, { spotId })
-        .then(res => {
-            setFavorites(res.data.favorites);
-        })
-        .catch(err => {
-            console.error(err);
-        });
-};
-
-const removeFavorite = (spotId) => {
+      .then(res => {
+        setFavorites(res.data.favorites);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
+  
+  const removeFavorite = (spotId) => {
     axios.put(`${process.env.REACT_APP_SERVER_URL}/api/user/${loggedInUser}/removeFavorite`, { spotId })
-        .then(res => {
-            setFavorites(res.data.favorites);
-        })
-        .catch(err => {
-            console.error(err);
-        });
-};
+      .then(res => {
+        setFavorites(res.data.favorites);
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  };
 
   return (
     <div className="spot-card">
@@ -98,16 +97,16 @@ const removeFavorite = (spotId) => {
                   {copyPin}
                 </div>
                 {loggedInUser && (
-                  favorites.includes(spot._id) ? (
-                    <button onClick={() => removeFavorite(spot._id)}>
-                      {solidStarIcon} Remove from Favorites
-                    </button>
-                  ) : (
-                    <button onClick={() => addFavorite(spot._id)}>
-                      {regularStarIcon} Add to Favorites
-                    </button>
-                  )
-                )}
+  favorites.includes(spot._id) ? (
+    <button onClick={() => removeFavorite(spot._id)}>
+      {solidStarIcon} Remove from Favorites
+    </button>
+  ) : (
+    <button onClick={() => addFavorite(spot._id)}>
+      {regularStarIcon} Add to Favorites
+    </button>
+  )
+)}
                 </div>
               </div>
               </div>
