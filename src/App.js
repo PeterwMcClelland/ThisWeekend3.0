@@ -15,10 +15,10 @@ function HomePage() {
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState(null);
-
-  const handleLogout = () => {
+    
+    const handleLogout = () => {
     setLoggedInUser(null);
-  };
+    };
 
   return (
     <BrowserRouter>
@@ -27,8 +27,9 @@ function App() {
           <header className="App-header">
             <div className="navbar">
               <div className='hero-header'>
-              <NavLink to="/">This Weekend</NavLink>
+                <NavLink to="/">This Weekend</NavLink>
               </div>
+
               <div className="navlink">
                 {loggedInUser ? (
                   <>
@@ -51,20 +52,22 @@ function App() {
               </div>
             </div>
           </header>
+
           <Routes>
             <Route exact path="/" element={<HomePage />} />
-            <Route
-              exact
-              path="/signup"
-              element={<SignUpForm setLoggedInUser={setLoggedInUser} />}
-            />
-            <Route
-              exact
-              path="/login"
-              element={<LoginForm setLoggedInUser={setLoggedInUser} />}
-            />
+              <Route
+               exact
+               path="/signup"
+                element={<SignUpForm setLoggedInUser={setLoggedInUser} />}
+              />
+
+              <Route
+                exact
+                path="/login"
+                element={<LoginForm setLoggedInUser={setLoggedInUser} />}
+              />
           </Routes>
-          <div className="homebody"></div>
+            <div className="homebody"></div>
         </div>
       </div>
     </BrowserRouter>
